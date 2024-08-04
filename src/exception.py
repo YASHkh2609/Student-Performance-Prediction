@@ -1,4 +1,5 @@
 import sys #will provide exception info
+from src.logger import logging
 
 def error_message_detail(error, error_detail:sys):
     _,_,exc_tb=error_detail.exc_info() # exc_info() returns the tuple (type(e), e, e.__traceback__).
@@ -21,6 +22,7 @@ class CustomException(Exception):
 #     try:
 #         a=1/0
 #     except Exception as e:
+#         logging.info("Divide by zero error")
 #         raise CustomException(e, sys)
     
 #     Traceback (most recent call last):
