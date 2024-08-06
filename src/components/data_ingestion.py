@@ -12,6 +12,9 @@ from sklearn.model_selection import train_test_split
 from dataclasses import dataclass # we can directly create variables inside a class using this
 #to take inputs of data we'll have the DataIngestionConfig  class which will have the paths to the data components
 
+from src.components.data_transformation import DataTransformation, DataTransformationConfig
+
+
 @dataclass #decorator - we can create variables without __init__ function
 class DataIngestionConfig:
     train_data_path: str = os.path.join('artifacts',"train.csv")
@@ -51,4 +54,7 @@ class DataIngestion:
 
 if __name__=="__main__":
     obj = DataIngestion()
-    obj.initiate_data_ingestion()
+    train_data,test_data = obj.initiate_data_ingestion()
+
+    data_transformation = DataTransformation()
+    train_arr, test_arr, _ = data_transformation.initiate_data_transformation(train_data, test_data)
