@@ -13,7 +13,7 @@ from dataclasses import dataclass # we can directly create variables inside a cl
 #to take inputs of data we'll have the DataIngestionConfig  class which will have the paths to the data components
 
 from src.components.data_transformation import DataTransformation, DataTransformationConfig
-
+from src.components.model_trainer import ModelTrainer
 
 @dataclass #decorator - we can create variables without __init__ function
 class DataIngestionConfig:
@@ -58,3 +58,6 @@ if __name__=="__main__":
 
     data_transformation = DataTransformation()
     train_arr, test_arr, _ = data_transformation.initiate_data_transformation(train_data, test_data)
+
+    model_trainer = ModelTrainer()
+    print(model_trainer.initiate_model_trainer(train_arr,test_arr))
