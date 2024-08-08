@@ -9,12 +9,7 @@ application = Flask(__name__)
 app = application
 
 #route for a home page
-
-@app.route('/')
-def index():
-    return render_template('index.html')#landing page
-
-@app.route('/predict', methods=['GET', 'POST'])
+@app.route('/', methods=['GET', 'POST'])
 def predict_datapoint():
     if request.method =='GET':
         return render_template('home.html')#will have the fields for the inputs to be provided from the user
@@ -37,4 +32,6 @@ def predict_datapoint():
         return render_template('home.html', results=results[0])
     
 if __name__=="__main__":
-    app.run(port= 5000, debug=True)
+    # app.run(port= 5000, debug=True)
+    app.run(port= 5000)# before deployment we should remove the debug mode
+
